@@ -4,9 +4,17 @@ namespace Two_Classes_One_Interface
 {
     class Program
     {
+
+        public static void printHeartRates(Rabit rbt, Elephant elphnt) {
+            Console.WriteLine("Rabits heart rate is {0} beats per minut on average.", rbt.HeartBeatRatePerMinut());
+            Console.WriteLine("Elephants heart rate is {0} beats per minut on average.", elphnt.HeartBeatRatePerMinut());
+        }
+
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Rabit rbt = new Rabit();
+            Elephant elphnt = new Elephant();
+            printHeartRates(rbt, elphnt);
         }
     }
 }
