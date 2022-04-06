@@ -5,6 +5,19 @@ namespace List
 {
     class Program
     {
+        public static int[] MiddleFiveElements(List<int> numbers)
+        {
+            int middleNum = 0;
+            foreach (int num in numbers)
+            {
+                if (num == numbers.Count / 2 - 1)
+                    middleNum = num;
+            }
+
+            int[] middle5 = { numbers[middleNum - 2], numbers[middleNum - 1], middleNum + 1, numbers[middleNum + 1], numbers[middleNum + 2] };
+            return middle5;
+        }
+
         static void Main(string[] args)
         {
             // Initialize a list with numbers 1 through 10 
@@ -35,21 +48,10 @@ namespace List
             }
             Console.WriteLine("\n");
             
+
             // Now we will remove the middle 5 elements from the list and print the list again
             // For this we will need a Predicate Delegate
-
-            int[] MiddleFiveElements() {
-                int middleNum = 0;
-                foreach (int num in numbers) { 
-                    if (num == numbers.Count / 2 - 1)
-                        middleNum = num;
-                }
-
-                int[] middle5 = { numbers[middleNum - 2], numbers[middleNum - 1], middleNum + 1 , numbers[middleNum + 1], numbers[middleNum + 2] };
-                return middle5;    
-            }
-
-            int[] middle5nums = MiddleFiveElements();
+            int[] middle5nums = MiddleFiveElements(numbers);
 
             //Middle five nubers
             Console.WriteLine("Middle 5: ");
