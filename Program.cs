@@ -33,7 +33,50 @@ namespace List
                 else
                     Console.Write(num);
             }
+            Console.WriteLine("\n");
+            
+            // Now we will remove the middle 5 elements from the list and print the list again
+            // For this we will need a Predicate Delegate
 
+            int[] MiddleFiveElements() {
+                int middleNum = 0;
+                foreach (int num in numbers) { 
+                    if (num == numbers.Count / 2 - 1)
+                        middleNum = num;
+                }
+
+                int[] middle5 = { numbers[middleNum - 2], numbers[middleNum - 1], middleNum + 1 , numbers[middleNum + 1], numbers[middleNum + 2] };
+                return middle5;    
+            }
+
+            int[] middle5nums = MiddleFiveElements();
+
+            //Middle five nubers
+            Console.WriteLine("Middle 5: ");
+            foreach (int num in middle5nums)
+            {
+                if (middle5nums[middle5nums.Length - 1] != num)
+                    Console.Write(num + ", ");
+                else
+                    Console.Write(num);
+            }
+            Console.WriteLine();
+
+
+            //Now that we have the middle five numbers we can extract them from the List
+            numbers.RemoveRange(middle5nums[0]-1, 5);
+            Console.WriteLine("Removing middle 5 elements of the list...\n");
+
+            //and print out the list again
+            Console.WriteLine("And now the list looks like this:");
+            foreach (int num in numbers)
+            {
+                if (numbers[numbers.Count - 1] != num)
+                    Console.Write(num + ", ");
+                else
+                    Console.Write(num);
+            }
+            Console.WriteLine();
 
         }
     }
