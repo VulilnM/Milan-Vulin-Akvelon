@@ -6,7 +6,7 @@ namespace Two_Classes_One_Interface
 {
     class Rabit : IHeart
     {
-        public string HeartBeatRatePerMinut()
+        public string HeartBeatRatePerMinute()
         {
             return "180-350";
         }

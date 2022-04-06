@@ -6,6 +6,6 @@ namespace Two_Classes_One_Interface
 {
     interface IHeart
     {
-        public string HeartBeatRatePerMinut();
+        public string HeartBeatRatePerMinute();
     }
 }

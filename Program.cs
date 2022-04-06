@@ -6,8 +6,8 @@ namespace Two_Classes_One_Interface
     {
 
         public static void printHeartRates(Rabit rbt, Elephant elphnt) {
-            Console.WriteLine("Rabits heart rate is {0} beats per minut on average.", rbt.HeartBeatRatePerMinut());
-            Console.WriteLine("Elephants heart rate is {0} beats per minut on average.", elphnt.HeartBeatRatePerMinut());
+            Console.WriteLine("Rabits heart rate is {0} beats per minut on average.", rbt.HeartBeatRatePerMinute());
+            Console.WriteLine("Elephants heart rate is {0} beats per minut on average.", elphnt.HeartBeatRatePerMinute());
         }
 
         static void Main(string[] args)
