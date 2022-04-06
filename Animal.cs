@@ -6,5 +6,23 @@ namespace OOP_Principles_Implementation
 {
     abstract class Animal
     {
+        // Protected acces modifier for inheritance
+        protected string animalType;
+        protected string animalSubType;
+        protected int numberOfLegs;
+        protected string typeOfFur;
+
+        // Constructor for encapsulation (and also abstraction?)
+        public Animal(string AnimalType, string AnimalSubType, int NumberOfLegs, string TypeOfFur)
+        {
+            animalType = AnimalType;
+            animalSubType = AnimalSubType;
+            numberOfLegs = NumberOfLegs;
+            typeOfFur = TypeOfFur;
+        }
+
+        // Overriding for polymorphysm
+        protected abstract string makeSound();
+        public abstract void presentSelf();
     }
 }
