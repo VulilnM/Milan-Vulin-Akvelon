@@ -6,7 +6,7 @@ namespace OOP_Principles_Implementation
 {
     abstract class Animal
     {
-        // Protected acces modifier for inheritance
+        // Protected access modifiers for inheritance
         protected string animalType;
         protected string animalSubType;
         protected int numberOfLegs;

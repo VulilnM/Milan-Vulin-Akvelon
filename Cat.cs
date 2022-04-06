@@ -25,7 +25,7 @@ namespace OOP_Principles_Implementation
                               "Animal subtype: " + animalSubType + "\n" +
                               "Number of legs: " + numberOfLegs + "\n" +
                               "Type of Fur: " + typeOfFur + "\n" +
-                              "Lenfth of claws: " + lengthOfClaws + "\n" +
+                              "Length of claws: " + lengthOfClaws + "\n" +
                               "Sound: " + makeSound()
                                );
         }

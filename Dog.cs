@@ -16,7 +16,7 @@ namespace OOP_Principles_Implementation
 
         protected override string makeSound()
         {
-            return "WUF WUF";
+            return "WUF WUF!";
         }
 
         public override void presentSelf()
