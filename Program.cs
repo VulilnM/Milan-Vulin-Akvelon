@@ -65,6 +65,19 @@ namespace Stack
             // Now that we have the number we' ll use Contains() method to see if it's in the stack
             Console.WriteLine("The stack" + (myStack.Contains(userNumber) ? " contains " : " does not contain ") + "the number {0}", userNumber);
 
+
+            // Finally, lets clear the stack
+            Console.WriteLine("Clearing the stack...");
+            myStack.Clear();
+
+            Console.WriteLine("Stack after clearing:");
+            if (myStack.Count == 0)
+                Console.WriteLine("It's empty now.");
+            else
+                foreach (int num in myStack)
+                {
+                    Console.Write(num + " ");
+                }
         }
     }
 }
