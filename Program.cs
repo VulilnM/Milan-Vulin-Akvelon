@@ -15,6 +15,11 @@ namespace OOP_Principles_Implementation
             Dog dzeki = new Dog(true, "Mammel", "Dog", 4, "Hair");
             dzeki.presentSelf();
             Console.WriteLine();
+
+            Console.WriteLine("Presenting a very tasty animal called Kokoš Anel! x)");
+            Chicken kokoshAnel = new Chicken("All kinds of nice, warm colors!", "Bird", "Chicken", 2, "Feathers");
+            kokoshAnel.presentSelf();
+            Console.WriteLine();
         }
     }
 }
