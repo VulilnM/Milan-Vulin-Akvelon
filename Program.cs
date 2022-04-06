@@ -91,7 +91,7 @@ namespace List
 
             Console.Write("The number {0} will be placed at {1}th position\n", userNumber, userIndex);
 
-            Console.WriteLine("Inserting {0} at index {1} ...", userNumber, userIndex);
+            Console.WriteLine("Inserting {0} as {1}th element...", userNumber, userIndex);
             numbers.Insert(userIndex -1, userNumber);
 
             //Show the modified list
@@ -102,7 +102,14 @@ namespace List
                 else
                     Console.Write(num);
             }
-            Console.WriteLine();
+            Console.WriteLine("\n");
+
+            //Finally lets clear the list
+            Console.WriteLine("Clearing the list...");
+            numbers.Clear();
+
+            if (numbers.Count == 0)
+                Console.WriteLine("List is now empty, have a nice day!");
         }
     }
 }
