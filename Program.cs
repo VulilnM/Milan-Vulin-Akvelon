@@ -54,8 +54,20 @@ namespace Queue
                 Console.Write(num + " ");
             }
             Console.WriteLine("\n");
-        
-            
+
+
+            // Finally, lets clear the stack
+            Console.WriteLine("Clearing the queue...");
+            myQueue.Clear();
+
+            Console.WriteLine("Queue after clearing:");
+            if (myQueue.Count == 0)
+                Console.WriteLine("Queue's empty now.");
+            else
+                foreach (int num in myQueue)
+                {
+                    Console.Write(num + " ");
+                }
         }
     }
 }
