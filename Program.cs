@@ -6,7 +6,10 @@ namespace OOP_Principles_Implementation
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Console.WriteLine("Presenting a very cute animal called Milica! :)");
+            Cat milica = new Cat(2, "Mammel", "Cat", 4, "Hair");
+            milica.presentSelf();
+            Console.WriteLine();
         }
     }
 }
