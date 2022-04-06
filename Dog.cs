@@ -4,7 +4,7 @@ using System.Text;
 
 namespace OOP_Principles_Implementation
 {
-    class Dog : Animal
+    class Dog
     {
     }
 }
