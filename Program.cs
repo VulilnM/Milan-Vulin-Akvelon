@@ -34,6 +34,28 @@ namespace Queue
             Console.WriteLine("\n");
 
 
+            // Peek vs Dequue
+            // Peek - only returns the value, doesn't remove it from the Queue 
+            Console.Write("Peeking the first element: ");
+            Console.WriteLine(myQueue.Peek());
+            Console.WriteLine("Queue after Peek(): ");
+            foreach (int num in myQueue)
+            {
+                Console.Write(num + " ");
+            }
+            Console.WriteLine("\n");
+
+            // Dequeue - returns and removes the value from the Queue
+            Console.Write("Dequeueing the first element: ");
+            Console.WriteLine(myQueue.Dequeue());
+            Console.WriteLine("Queue after Dequeue(): ");
+            foreach (int num in myQueue)
+            {
+                Console.Write(num + " ");
+            }
+            Console.WriteLine("\n");
+        
+            
         }
     }
 }
