@@ -6,7 +6,20 @@ namespace Ref_vs_Vall_Passing
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            // Value Type
+            int value = 1;
+
+            void ChangeValue(int val) {
+                val = val+1;
+                Console.WriteLine("Value while in the method: "+ val);
+            }
+
+            Console.Write("Value before the changing method: {0}\n", value);
+            
+            ChangeValue(value);
+
+            Console.Write("Value after the changing method: {0}", value);
+        
         }
     }
 }
