@@ -78,6 +78,31 @@ namespace List
             }
             Console.WriteLine();
 
+
+            // Ok, so now that we have played around a little bit with our list, lets add some user inputs activity
+            // We shall provide a functionality where user can choose a number and a place to insert that number in our list
+
+            // First, we will read the user inputs 
+            Console.WriteLine("Specify the number that you want to add:");
+            int userNumber = Int32.Parse(Console.ReadLine());
+
+            Console.WriteLine("Now, specify the position at which you want to insert the number {0}", userNumber);
+            int userIndex = Int32.Parse(Console.ReadLine());
+
+            Console.Write("The number {0} will be placed at {1}th position\n", userNumber, userIndex);
+
+            Console.WriteLine("Inserting {0} at index {1} ...", userNumber, userIndex);
+            numbers.Insert(userIndex -1, userNumber);
+
+            //Show the modified list
+            foreach (int num in numbers)
+            {
+                if (numbers[numbers.Count - 1] != num)
+                    Console.Write(num + ", ");
+                else
+                    Console.Write(num);
+            }
+            Console.WriteLine();
         }
     }
 }
