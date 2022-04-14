@@ -26,5 +26,10 @@ namespace Akvelon_Internship_Test_Task.Models
 
         [Required]
         public int TaskPriority { get; set; }
+
+        [ForeignKey("Project")]
+        public int ProjectFK { get; set; }
+
+        public Project Project { get; set; }
     }
 }

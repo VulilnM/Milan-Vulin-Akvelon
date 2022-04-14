@@ -28,5 +28,9 @@ namespace Akvelon_Internship_Test_Task.Models
             Active,
             Completed
         }
+
+        public int ProjectPriority { get; set; }
+
+        public List<Task> Tasks { get; set; }
     }
 }
