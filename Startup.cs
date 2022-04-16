@@ -1,4 +1,5 @@
 using Akvelon_Internship_Test_Task.Models;
+using Akvelon_Internship_Test_Task.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -13,6 +14,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Task = Akvelon_Internship_Test_Task.Models.Task;
 
 namespace Akvelon_Internship_Test_Task
 {
@@ -35,7 +37,13 @@ namespace Akvelon_Internship_Test_Task
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Akvelon_Internship_Test_Task", Version = "v1" });
             });
             services.AddDbContext<AppDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("ConStr")));
-
+            
+            // Registering repository services and mapping them to our models
+            #region Repositories
+            // Whenever these interfaces are requested - return the mapped class
+            services.AddScoped<IGenericRepository<Project>, GenericRepository<Project>>();
+            services.AddScoped<IGenericRepository<Task>, GenericRepository<Task>>();
+            #endregion
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
