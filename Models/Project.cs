@@ -22,12 +22,18 @@ namespace Akvelon_Internship_Test_Task.Models
         [Column(TypeName = "date")]
         public DateTime? CompletionDate { get; set; }
 
+        // Enumerator for project status
+        // NotStarted = 1
+        // Active = 2
+        // Completed = 3
         public enum ProjectStatus
         {
-            NotStarted,
+            NotStarted = 1,
             Active,
             Completed
         }
+
+        public ProjectStatus Status { get; set; }
 
         public int ProjectPriority { get; set; }
 

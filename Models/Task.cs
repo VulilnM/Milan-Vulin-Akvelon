@@ -12,12 +12,18 @@ namespace Akvelon_Internship_Test_Task.Models
         [Required]
         public string TaskName { get; set; }
 
+        // Enumerator for task status
+        // ToDo = 1
+        // InProgress = 2
+        // Done = 3
         public enum TaskStatus
         {
-            ToDo,
+            ToDo = 1,
             InProgress,
             Done
         }
+
+        public TaskStatus Status { get; set; }
 
         // Maximum and minimum task description length 
         [StringLength(1000, MinimumLength = 100)]
