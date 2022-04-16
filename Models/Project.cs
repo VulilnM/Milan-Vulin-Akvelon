@@ -18,10 +18,6 @@ namespace Akvelon_Internship_Test_Task.Models
         [Column(TypeName = "date")]
         public DateTime StartDate { get; set; }
 
-
-        [Column(TypeName = "date")]
-        public DateTime? CompletionDate { get; set; }
-
         // Enumerator for project status
         // NotStarted = 1
         // Active = 2
@@ -37,6 +33,11 @@ namespace Akvelon_Internship_Test_Task.Models
 
         public int ProjectPriority { get; set; }
 
+        // Nullable fields
+        #nullable enable
+        [Column(TypeName = "date")]
+        public DateTime? CompletionDate { get; set; }
         public List<Task> Tasks { get; set; }
+        #nullable disable
     }
 }
