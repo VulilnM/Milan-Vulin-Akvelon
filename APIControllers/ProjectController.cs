@@ -30,15 +30,16 @@ namespace Akvelon_Internship_Test_Task.APIControllers
         }
 
         [HttpPost]
-        public void AddProject(Project proj)
+        public void AddProject([FromForm] Project proj)
         {
             _repo.Add(proj);
         }
 
         [HttpDelete]
-        public void RemoveProject(Project proj)
+        [Route("{id}")]
+        public void RemoveProject(int id)
         {
-            _repo.Remove(proj);
+            _repo.Remove(id);
         }
 
         [HttpPut]

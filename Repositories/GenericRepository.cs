@@ -38,6 +38,7 @@ namespace Akvelon_Internship_Test_Task.Repositories
         public void Add(T entity)
         {
             _context.Set<T>().Add(entity);
+            _context.SaveChanges();
         }
 
         public void AddRange(IEnumerable<T> entities)
@@ -45,9 +46,12 @@ namespace Akvelon_Internship_Test_Task.Repositories
             _context.Set<T>().AddRange(entities);
         }
 
-        public void Remove(T entity)
+        public void Remove(int id)
         {
-            _context.Set<T>().Remove(entity);
+            var objToRemove = _context.Set<T>().Find(id);
+            _context.Set<T>().Remove(objToRemove);
+            _context.SaveChanges();
+            
         }
 
         public void RemoveRange(IEnumerable<T> entities)
@@ -58,6 +62,7 @@ namespace Akvelon_Internship_Test_Task.Repositories
         public void Update(T entity)
         {
             _context.Set<T>().Update(entity);
+            _context.SaveChanges();
         }
 
     }

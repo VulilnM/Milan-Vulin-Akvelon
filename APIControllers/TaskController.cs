@@ -38,9 +38,10 @@ namespace TestTaskProjAkv.Controllers
         }
 
         [HttpDelete]
-        public void RemoveTask(Task task)
+        [Route("{id}")]
+        public void RemoveTask(int taskId)
         {
-            _repo.Remove(task);
+            _repo.Remove(taskId);
         }
 
         [HttpPut]
