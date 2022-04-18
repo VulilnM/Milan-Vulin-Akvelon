@@ -37,7 +37,7 @@ namespace Akvelon_Internship_Test_Task.Models
         #nullable enable
         [Column(TypeName = "date")]
         public DateTime? CompletionDate { get; set; }
-        public List<Task> Tasks { get; set; }
+        public List<Task>? Tasks { get; set; }
         #nullable disable
     }
 }
