@@ -26,6 +26,8 @@ namespace Akvelon_Internship_Test_Task.Models
         public TaskStatus Status { get; set; }
 
         [Required]
+        // The priority can only be from 1(very low) to 5(very high)
+        [Range(1, 5)]
         public int TaskPriority { get; set; }
 
         [ForeignKey("Project")]

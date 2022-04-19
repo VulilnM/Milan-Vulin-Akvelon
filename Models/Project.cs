@@ -31,6 +31,8 @@ namespace Akvelon_Internship_Test_Task.Models
 
         public ProjectStatus Status { get; set; }
 
+        // The priority can only be from 1(very low) to 5(very high)
+        [Range(1, 5)]
         public int ProjectPriority { get; set; }
 
         // Nullable fields
