@@ -54,9 +54,18 @@ namespace Akvelon_Internship_Test_Task.Repositories
             
         }
 
-        public void RemoveRange(IEnumerable<T> entities)
+        // Removing a range of objects from the database based on passed arrays of ids of objects to remove
+        public void RemoveRange(IEnumerable<int> ids)
         {
-            _context.Set<T>().RemoveRange(entities);
+
+            foreach (var id in ids) {
+                var objToRemove = _context.Set<T>().Find(id);
+                if (objToRemove != null)
+                {
+                    _context.Set<T>().Remove(objToRemove);
+                }
+            }
+            _context.SaveChanges();
         }
 
         public void Update(T entity)

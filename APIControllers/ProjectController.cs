@@ -58,6 +58,16 @@ namespace Akvelon_Internship_Test_Task.APIControllers
         {
             _repo.Remove(id);
         }
+        [HttpDelete]
+        [Route("removeProjects")]
+        [SwaggerOperation(Summary = "Removes a range of projects with the specified IDs (if they exist).")]
+        [SwaggerResponse(200, "Everything is fine, specified projects deleted!")]
+        [SwaggerResponse(400, "Bad request, please check the parameters again!")]
+        [SwaggerResponse(500, "Server has a problem, something is wrong on the server side!")]
+        public void RemoveProjects(IEnumerable<int> ids)
+        {
+            _repo.RemoveRange(ids);
+        }
 
         [HttpPut]
         [SwaggerOperation(Summary = "Updates the specified project form the database (project with the specified id) if it exists.")]

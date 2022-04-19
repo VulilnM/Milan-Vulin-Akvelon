@@ -15,7 +15,7 @@ namespace Akvelon_Internship_Test_Task.Repositories
             void Add(T entity);
             void AddRange(IEnumerable<T> entities);
             void Remove(int id);
-            void RemoveRange(IEnumerable<T> entities);
+            void RemoveRange(IEnumerable<int> ids);
             void Update(T entity);
         }
 }
