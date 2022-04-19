@@ -1,6 +1,7 @@
 ﻿using Akvelon_Internship_Test_Task.Models;
 using Akvelon_Internship_Test_Task.Repositories;
 using Microsoft.AspNetCore.Mvc;
+using Swashbuckle.AspNetCore.Annotations;
 using System.Collections.Generic;
 
 
@@ -19,6 +20,10 @@ namespace TestTaskProjAkv.Controllers
         }
 
         [HttpGet]
+        [SwaggerOperation(Summary = "Returns all the tasks in the database.")]
+        [SwaggerResponse(200, "Everything is fine, returnig all tasks!")]
+        [SwaggerResponse(400, "Bad request, please check the parameters again!")]
+        [SwaggerResponse(500, "Server has a problem, something is wrong on the server side!")]
         public IEnumerable<Task> GetAllTasks()
         {
             return _repo.GetAll();
@@ -26,12 +31,20 @@ namespace TestTaskProjAkv.Controllers
 
         [HttpGet]
         [Route("{id}")]
+        [SwaggerOperation(Summary = "Returns the specific task with the specified taskId.")]
+        [SwaggerResponse(200, "Everything is fine, returnig the task!")]
+        [SwaggerResponse(400, "Bad request, please check the parameter again!")]
+        [SwaggerResponse(500, "Server has a problem, something is wrong on the server side!")]
         public Task GetTaskById(int id)
         {
             return _repo.GetById(id);
         }
 
         [HttpPost]
+        [SwaggerOperation(Summary = "Adds a task to the database.")]
+        [SwaggerResponse(201, "Task succesfully saved to the database!")]
+        [SwaggerResponse(400, "Bad request, please check the parameters again!")]
+        [SwaggerResponse(500, "Server has a problem, something is wrong on the server side!")]
         public void AddTask(Task task)
         {
             _repo.Add(task);
@@ -39,12 +52,20 @@ namespace TestTaskProjAkv.Controllers
 
         [HttpDelete]
         [Route("{id}")]
+        [SwaggerOperation(Summary = "Deletes the specified task form the database (task with the specified id) if it exists.")]
+        [SwaggerResponse(200, "Everything is fine, task deleted!")]
+        [SwaggerResponse(400, "Bad request, please check the parameters again!")]
+        [SwaggerResponse(500, "Server has a problem, something is wrong on the server side!")]
         public void RemoveTask(int taskId)
         {
             _repo.Remove(taskId);
         }
 
         [HttpPut]
+        [SwaggerOperation(Summary = "Updates the specified task form the database (task with the specified id) if it exists.")]
+        [SwaggerResponse(200, "Everything is fine, task updated!")]
+        [SwaggerResponse(400, "Bad request, please check the parameters again!")]
+        [SwaggerResponse(500, "Server has a problem, something is wrong on the server side!")]
         public void UpdateProject(Task task)
         {
             _repo.Update(task);

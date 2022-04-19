@@ -34,7 +34,25 @@ namespace Akvelon_Internship_Test_Task
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Akvelon_Internship_Test_Task", Version = "v1" });
+                c.EnableAnnotations();
+                c.SwaggerDoc("v1", new OpenApiInfo
+                {
+                    Version = "v1",
+                    Title = "Akvelon Intership Test Task",
+                    Description = "An ASP.NET Core Web API managing projects and task related to those projects.",
+                    TermsOfService = new Uri("https://github.com/VulilnM/Milan-Vulin-Akvelon/tree/Test_Task_Project"),
+                    Contact = new OpenApiContact
+                    {
+                        Name = "Contact - Developers LinkedIn profile",
+                        Url = new Uri("https://www.linkedin.com/in/vulin-milan-dev/")
+                    },
+
+                    License = new OpenApiLicense
+                    {
+                        Name = "License - GNU General Public License v2.0",
+                        Url = new Uri("https://github.com/VulilnM/Milan-Vulin-Akvelon/blob/master/LICENSE")
+                    }
+                });
             });
             services.AddDbContext<AppDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("ConStr")));
             
