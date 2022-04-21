@@ -30,7 +30,7 @@ namespace TestTaskProjAkv.Controllers
             foreach (Task t in _tasks)
             {
                 // Finds the related project for the task specified
-                t.Project = _repo.FindProjectForTask(t);
+                _repo.FindProjectForTask(t);
             }
 
             return _tasks; 
@@ -47,7 +47,7 @@ namespace TestTaskProjAkv.Controllers
             Task _task = _repo.GetById(id);
 
             // Finds the related project for the task specified
-            _task.Project = _repo.FindProjectForTask(_task);
+            _repo.FindProjectForTask(_task);
 
             return _task;
         }

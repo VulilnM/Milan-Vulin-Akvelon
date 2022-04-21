@@ -16,8 +16,8 @@ namespace Akvelon_Internship_Test_Task.APIControllers
     {
 
         private readonly IGenericRepository<Project> _repo;
-        /*private readonly IGenericRepository<AppDbContext> _context;*/
         private readonly AppDbContext _context;
+
         public ProjectController(IGenericRepository<Project> repo, AppDbContext appDbContext)
         {
             _repo = repo;
@@ -32,14 +32,12 @@ namespace Akvelon_Internship_Test_Task.APIControllers
         public IEnumerable<Project> GetAllProjects()
         {
             var _projectsWithTasks = _repo.GetAll();
-            IEnumerable<Task> _relatedTasks;
             
-            // Iz nekog razloga vraca duplirane taskove za svaki objekat?? bez continue triplirane?
-            foreach (var _project in _projectsWithTasks) {
-                _relatedTasks = _repo.FindTasksForProject(_project);
-                continue;
-                _project.Tasks.AddRange(_relatedTasks);
-            }
+            foreach (var _project in _projectsWithTasks) 
+
+                // Find all of the related tasks for the passed project
+               _repo.FindTasksForProject(_project);
+
             return _projectsWithTasks;
 
         }
@@ -52,10 +50,10 @@ namespace Akvelon_Internship_Test_Task.APIControllers
         [SwaggerResponse(500, "Server has a problem, something is wrong on the server side!")]
         public Project GetProjectById(int id)
         {
-
             Project _project = _repo.GetById(id);
-            IEnumerable<Task> _relatedTasks = _repo.FindTasksForProject(_project);
-            _project.Tasks.AddRange(_relatedTasks);
+
+            // Find all of the related tasks for the passed project
+            _repo.FindTasksForProject(_project);
 
             return _project;
         }
