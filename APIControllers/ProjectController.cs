@@ -2,19 +2,26 @@
 using Akvelon_Internship_Test_Task.Repositories;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Akvelon_Internship_Test_Task.APIControllers
 {
+
     [Route("api/[controller]")]
     [ApiController]
+
     public class ProjectController : ControllerBase
     {
-        private readonly IGenericRepository<Project> _repo;
 
-        public ProjectController(IGenericRepository<Project> repo)
+        private readonly IGenericRepository<Project> _repo;
+        /*private readonly IGenericRepository<AppDbContext> _context;*/
+        private readonly AppDbContext _context;
+        public ProjectController(IGenericRepository<Project> repo, AppDbContext appDbContext)
         {
             _repo = repo;
+            _context = appDbContext;
         }
 
         [HttpGet]
@@ -24,7 +31,17 @@ namespace Akvelon_Internship_Test_Task.APIControllers
         [SwaggerResponse(500, "Server has a problem, something is wrong on the server side!")]
         public IEnumerable<Project> GetAllProjects()
         {
-            return _repo.GetAll();
+            var _projectsWithTasks = _repo.GetAll();
+            IEnumerable<Task> _relatedTasks;
+            
+            // Iz nekog razloga vraca duplirane taskove za svaki objekat?? bez continue triplirane?
+            foreach (var _project in _projectsWithTasks) {
+                _relatedTasks = _repo.FindTasksForProject(_project);
+                continue;
+                _project.Tasks.AddRange(_relatedTasks);
+            }
+            return _projectsWithTasks;
+
         }
 
         [HttpGet]
@@ -35,7 +52,12 @@ namespace Akvelon_Internship_Test_Task.APIControllers
         [SwaggerResponse(500, "Server has a problem, something is wrong on the server side!")]
         public Project GetProjectById(int id)
         {
-            return _repo.GetById(id);
+
+            Project _project = _repo.GetById(id);
+            IEnumerable<Task> _relatedTasks = _repo.FindTasksForProject(_project);
+            _project.Tasks.AddRange(_relatedTasks);
+
+            return _project;
         }
 
         [HttpPost]

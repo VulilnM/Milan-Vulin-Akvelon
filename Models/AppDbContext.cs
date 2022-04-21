@@ -101,8 +101,8 @@ namespace Akvelon_Internship_Test_Task.Models
             );
         }
 
-            DbSet<Task> Task { get; set; }
-        DbSet<Project> Project { get; set; }
+        public DbSet<Task> Task { get; set; }
+        public DbSet<Project> Project { get; set; }
 
     }
 }

@@ -74,5 +74,20 @@ namespace Akvelon_Internship_Test_Task.Repositories
             _context.SaveChanges();
         }
 
+        // Finds all the task which have the same ProjectFK as the passed project's ID
+        IEnumerable<Task> IGenericRepository<T>.FindTasksForProject(Project project)
+        {
+            IEnumerable<Task> tasks = _context.Task.Where(t => t.ProjectFK == project.ProjectId).Distinct().ToList();
+            
+            return tasks;
+        }
+
+        // Finds a project to which a specific task is related to by comparing the tasks projectFK and projects ID
+        Project IGenericRepository<T>.FindProjectForTask(Task task)
+        {
+            Project _project = _context.Project.Single(p => p.ProjectId == task.ProjectFK);
+
+            return _project; 
+        }
     }
 }

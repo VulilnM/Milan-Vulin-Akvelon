@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Akvelon_Internship_Test_Task.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
 
@@ -17,5 +18,9 @@ namespace Akvelon_Internship_Test_Task.Repositories
             void Remove(int id);
             void RemoveRange(IEnumerable<int> ids);
             void Update(T entity);
-        }
+            IEnumerable<Task> FindTasksForProject(Project project);
+            Project FindProjectForTask(Task task);
+
+
+    }
 }

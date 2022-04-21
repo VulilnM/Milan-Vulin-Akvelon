@@ -30,17 +30,17 @@ namespace Akvelon_Internship_Test_Task.Models
         [Range(1, 5)]
         public int TaskPriority { get; set; }
 
-        [ForeignKey("Project")]
-        public int ProjectFK { get; set; }
-
-        public Project Project { get; set; }
-
         //Nullable fields
         #nullable enable
         // Maximum and minimum task description length 
         [StringLength(1000, MinimumLength = 100)]
         [Column(TypeName = "varchar(1000)")]
-        public string? TaskDescription { get; set; }
+        public string TaskDescription { get; set; }
         #nullable disable
+
+        [ForeignKey("Project")]
+        public int ProjectFK { get; set; }
+
+        public Project Project { get; set; }
     }
 }

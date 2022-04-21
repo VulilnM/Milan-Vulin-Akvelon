@@ -26,7 +26,14 @@ namespace TestTaskProjAkv.Controllers
         [SwaggerResponse(500, "Server has a problem, something is wrong on the server side!")]
         public IEnumerable<Task> GetAllTasks()
         {
-            return _repo.GetAll();
+            IEnumerable<Task> _tasks = _repo.GetAll();
+            foreach (Task t in _tasks)
+            {
+                // Finds the related project for the task specified
+                t.Project = _repo.FindProjectForTask(t);
+            }
+
+            return _tasks; 
         }
 
         [HttpGet]
@@ -37,7 +44,12 @@ namespace TestTaskProjAkv.Controllers
         [SwaggerResponse(500, "Server has a problem, something is wrong on the server side!")]
         public Task GetTaskById(int id)
         {
-            return _repo.GetById(id);
+            Task _task = _repo.GetById(id);
+
+            // Finds the related project for the task specified
+            _task.Project = _repo.FindProjectForTask(_task);
+
+            return _task;
         }
 
         [HttpPost]
