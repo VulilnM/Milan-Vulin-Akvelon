@@ -25,7 +25,7 @@ namespace Akvelon_Internship_Test_Task.APIControllers
         }
 
         [HttpGet]
-        [SwaggerOperation(Summary = "Returns all the projects in the database.")]
+        [SwaggerOperation(Summary = "Returns all the projects in the database, with theirs related task.")]
         [SwaggerResponse(200, "Everything is fine, returnig all projects!")]
         [SwaggerResponse(400, "Bad request, please check the parameters again!")]
         [SwaggerResponse(500, "Server has a problem, something is wrong on the server side!")]
@@ -44,7 +44,7 @@ namespace Akvelon_Internship_Test_Task.APIControllers
 
         [HttpGet]
         [Route("{id}")]
-        [SwaggerOperation(Summary = "Returns the specific project with the specified projectId.")]
+        [SwaggerOperation(Summary = "Returns the specific project with the specified projectId and all of its related tasks.")]
         [SwaggerResponse(200, "Everything is fine, returnig the project!")]
         [SwaggerResponse(400, "Bad request, please check the parameter again!")]
         [SwaggerResponse(500, "Server has a problem, something is wrong on the server side!")]

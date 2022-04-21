@@ -20,7 +20,7 @@ namespace TestTaskProjAkv.Controllers
         }
 
         [HttpGet]
-        [SwaggerOperation(Summary = "Returns all the tasks in the database.")]
+        [SwaggerOperation(Summary = "Returns all the tasks in the database with their related project.")]
         [SwaggerResponse(200, "Everything is fine, returnig all tasks!")]
         [SwaggerResponse(400, "Bad request, please check the parameters again!")]
         [SwaggerResponse(500, "Server has a problem, something is wrong on the server side!")]
@@ -38,7 +38,7 @@ namespace TestTaskProjAkv.Controllers
 
         [HttpGet]
         [Route("{id}")]
-        [SwaggerOperation(Summary = "Returns the specific task with the specified taskId.")]
+        [SwaggerOperation(Summary = "Returns the specific task with the specified taskId and its related project.")]
         [SwaggerResponse(200, "Everything is fine, returnig the task!")]
         [SwaggerResponse(400, "Bad request, please check the parameter again!")]
         [SwaggerResponse(500, "Server has a problem, something is wrong on the server side!")]
