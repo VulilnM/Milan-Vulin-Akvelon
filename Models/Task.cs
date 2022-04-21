@@ -35,7 +35,7 @@ namespace Akvelon_Internship_Test_Task.Models
         // Maximum and minimum task description length 
         [StringLength(1000, MinimumLength = 100)]
         [Column(TypeName = "varchar(1000)")]
-        public string TaskDescription { get; set; }
+        public string? TaskDescription { get; set; }
         #nullable disable
 
         [ForeignKey("Project")]
