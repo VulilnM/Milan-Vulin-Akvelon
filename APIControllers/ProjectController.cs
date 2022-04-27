@@ -63,7 +63,7 @@ namespace Akvelon_Internship_Test_Task.APIControllers
         [SwaggerResponse(201, "Project succesfully saved to the database!")]
         [SwaggerResponse(400, "Bad request, please check the parameters again!")]
         [SwaggerResponse(500, "Server has a problem, something is wrong on the server side!")]
-        public void AddProject([FromForm] Project proj)
+        public void AddProject(Project proj)
         {
             _repo.Add(proj);
         }

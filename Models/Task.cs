@@ -1,12 +1,18 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿
+using Swashbuckle.AspNetCore.Annotations;
+using System;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace Akvelon_Internship_Test_Task.Models
 {
+
     public class Task
     {
 
         [Key]
+        [SwaggerSchema(ReadOnly = true)]
         public int TaskId { get; set; }
 
         [Required]
@@ -30,17 +36,20 @@ namespace Akvelon_Internship_Test_Task.Models
         [Range(1, 5)]
         public int TaskPriority { get; set; }
 
+        [ForeignKey("Project")]
+        public int ProjectFK { get; set; }
+
         //Nullable fields
         #nullable enable
         // Maximum and minimum task description length 
         [StringLength(1000, MinimumLength = 100)]
         [Column(TypeName = "varchar(1000)")]
         public string? TaskDescription { get; set; }
+
+        [SwaggerSchema(ReadOnly = true)]
+        [JsonIgnore]
+        public Project? Project { get; set; }
         #nullable disable
-
-        [ForeignKey("Project")]
-        public int ProjectFK { get; set; }
-
-        public Project Project { get; set; }
+        
     }
 }

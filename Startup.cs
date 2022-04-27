@@ -1,3 +1,4 @@
+using Akvelon_Internship_Test_Task.APIControllers;
 using Akvelon_Internship_Test_Task.Models;
 using Akvelon_Internship_Test_Task.Repositories;
 using Microsoft.AspNetCore.Builder;
@@ -13,6 +14,7 @@ using Microsoft.OpenApi.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using Task = Akvelon_Internship_Test_Task.Models.Task;
 
@@ -30,13 +32,11 @@ namespace Akvelon_Internship_Test_Task
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
-            services.AddControllers().AddNewtonsoftJson(
-                options => options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
+            services.AddControllers();
 
             services.AddSwaggerGen(c =>
             {
-                c.EnableAnnotations();
+                
                 c.SwaggerDoc("v1", new OpenApiInfo
                 {
                     Version = "v1",
@@ -55,15 +55,19 @@ namespace Akvelon_Internship_Test_Task
                         Url = new Uri("https://github.com/VulilnM/Milan-Vulin-Akvelon/blob/master/LICENSE")
                     }
                 });
+
+                c.EnableAnnotations();
             });
+
             services.AddDbContext<AppDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("ConStr")));
-            
+
             // Registering repository services and mapping them to our models
             #region Repositories
             // Whenever these interfaces are requested - return the mapped class
             services.AddScoped<IGenericRepository<Project>, GenericRepository<Project>>();
             services.AddScoped<IGenericRepository<Task>, GenericRepository<Task>>();
             #endregion
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

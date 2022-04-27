@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Swashbuckle.AspNetCore.Annotations;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -9,6 +10,7 @@ namespace Akvelon_Internship_Test_Task.Models
     {
 
         [Key]
+        [SwaggerSchema(ReadOnly = true)]
         public int ProjectId { get; set; }
 
         [Required]
